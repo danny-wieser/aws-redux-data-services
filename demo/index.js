@@ -17,8 +17,7 @@ $( document ).ready(function() {
 
 
 function initializeStore() {
-  //const cognito =
-  let state = { cognito: reducer }
+  const state = { cognito: reducer }
   const allReducers = combineReducers(state);
   store = createStore(allReducers, applyMiddleware(thunk, logger));
   store.dispatch(actions.login({}));
