@@ -8,11 +8,13 @@
   "license": "MIT",
   "scripts": {
     "demo": "webpack-serve --config demo/webpack.config.js --content demo",
-    "demo-build": "webpack --config demo/webpack.config.js"
+    "demo-build": "webpack --config demo/webpack.config.js",
+    "lint": "eslint ."
   },
   "dependencies": {
     "amazon-cognito-identity-js": "^2.0.16",
     "aws-sdk": "^2.279.1",
+    "jquery": "^3.3.1",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
@@ -21,7 +23,11 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "jquery": "^3.3.1",
+    "eslint": "4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
     "json-loader": "^0.5.7",
     "renderjson": "^1.4.0",
     "webpack": "^4.16.1",

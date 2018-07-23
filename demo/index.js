@@ -1,24 +1,17 @@
-import { configure } from '../src';
-import { reducer, actions } from '../src/state/cognito'
-import { combineReducers, createStore, applyMiddleware } from 'redux';
 import * as $ from 'jquery';
-import thunk from 'redux-thunk';
-import logger from 'redux-logger'
-
-const config = require("json-loader!yaml-loader!./config.yml");
+import * as cognito from './services/cognito';
+import { configure } from '../src';
+import config from './config.yml';
+import { initializeStore, createActionSelect } from './demo-utils';
 
 configure(config);
 
-let store;
+const state = { cognito: cognito.reducer };
+const store = initializeStore(state);
 
-$( document ).ready(function() {
-  initializeStore();
-});
+// setup action select UI for services
+const container = $('#actions');
+const services = { cognito };
+createActionSelect(services, container);
 
-
-function initializeStore() {
-  const state = { cognito: reducer }
-  const allReducers = combineReducers(state);
-  store = createStore(allReducers, applyMiddleware(thunk, logger));
-  store.dispatch(actions.login({}));
-}
+store.subscribe(() => $('#current-state').html(JSON.stringify(store.getState(), undefined, 2)));

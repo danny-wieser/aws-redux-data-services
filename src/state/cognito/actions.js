@@ -1,15 +1,13 @@
-import { Action } from '../shared';
 
 export const types = {
-  LOGIN: 'login'
+  LOGIN: 'login',
 };
 
-const login = userData => dispatch => {
-  dispatch(Action(types.LOGIN));
-  console.log('doLogin')
-  return {};
-}
+const login = userData => (dispatch) => {
+  dispatch({ type: types.login });
+  return { username: userData.username };
+};
 
 export const actions = {
-  login
+  login,
 };

@@ -5,17 +5,13 @@ const outpath = __dirname;
 const mode = 'development';
 
 const rules = [
-  {
-    test: /\.js?$/, use: [ { loader: 'babel-loader' } ]
-  }
+  { test: /\.js?$/, use: [{ loader: 'babel-loader' }] },
 ];
 
-module.exports = env => {
-  return {
-    module: { rules },
-    mode,
-    output: { filename, path: outpath },
-    entry: path.join(__dirname, 'index'),
-    resolve: { extensions: ['.js'] }
-  };
-}
+module.exports = () => ({
+  module: { rules },
+  mode,
+  output: { filename, path: outpath },
+  entry: path.join(__dirname, 'index'),
+  resolve: { extensions: ['.js'] },
+});

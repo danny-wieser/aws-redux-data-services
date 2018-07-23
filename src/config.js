@@ -1,7 +1,7 @@
-let _config = {};
+let theconfig = {};
 
 export function configure(newConfig) {
-  _config = { ...newConfig };
+  theconfig = { ...newConfig };
 }
 
-export const config = _config;
+export const config = theconfig;
