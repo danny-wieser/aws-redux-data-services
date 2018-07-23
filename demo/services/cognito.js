@@ -1,24 +1,25 @@
-import * as $ from 'jquery';
-import cognito from '../../src/state/cognito';
+import * as cognito from '../../src/state/cognito';
+import { appendActionTemplate, fieldVals } from '../demo-utils';
 
-export const { types, reducer } = cognito;
+export const { types, reducer, actions } = cognito;
 
-export function handleSelection(type, actionTemplate) {
+export function handleSelection(type, container) {
   const typeValue = types[type];
   switch (typeValue) {
     case types.LOGIN:
-      $('<input id="username" placeholder="enter username"/>').appendTo(actionTemplate);
-      $('<input id="password" placeholder="enter password"/>').appendTo(actionTemplate);
+      appendActionTemplate(['username', 'password'], container);
       break;
     default:
   }
 }
 
+const doLogin = store => store.dispatch(actions.login(fieldVals(['username', 'password'])));
+
 export function handleDispatch(action, store) {
   const typeValue = types[action];
   switch (typeValue) {
     case types.LOGIN:
-      store.dispatch(cognito.actions.login());
+      doLogin(store);
       break;
     default:
   }

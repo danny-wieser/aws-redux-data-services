@@ -1,13 +1,29 @@
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="demo.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css" rel="stylesheet" type="text/css">
+    <link href="./demo.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <div id="actions"></div>
-    <div id="action-template"></div>
-    <button id="dispatch">Dispatch</button>
-    <h2>Current State</h2>
-    <pre class="state" id="current-state"></pre>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="auto cell">
+          <div id="actions"></div>
+        </div>
+      </div>
+      <div class="grid-x grid-padding-x" id="action-template">
+      </div>
+      <div class="grid-x grid-padding-x">
+        <div class="auto cell">
+          <button class="button expanded" id="dispatch">Dispatch</button>
+        </div>
+      </div>
+      <div class="grid-x grid-padding-x">
+        <div class="auto cell">
+          <p class="text-center lead">Current State</p>
+          <pre class="state" id="current-state"></pre>
+        </div>
+      </div>
+    </div>
     <script src="build/app.js"></script>
   </body>
 </html>

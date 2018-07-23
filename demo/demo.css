@@ -1,25 +1,13 @@
-select, input {
-  margin-top: 5px;
-  width: 100%;
-  color: blue;
-  padding: 0;
-  height: 30px;
-  position: relative;
-  left: 0;
-  outline: none;
-  border: 1px solid #cdcdcd;
-  border-color: rgba(0,0,0,.15);
-  background-color: white;
-  font-size: 16px;
-}
-button {
-  font-size: 16px;
-  width: 150px;
-  margin-top: 20px;
-}
 .state {
-  margin-top: 10px;
-  background-color: #ffffe0;
-  padding: 20px;
-  font-style: italic;
+  background: #303030;
 }
+.renderjson a              { text-decoration: none; }
+.renderjson .disclosure    { color: crimson; font-size: 150%; }
+.renderjson .syntax        { color: grey; }
+.renderjson .string        { color: red; }
+.renderjson .number        { color: cyan; }
+.renderjson .boolean       { color: plum; }
+.renderjson .key           { color: lightblue; }
+.renderjson .keyword       { color: lightgoldenrodyellow; }
+.renderjson .object.syntax { color: lightseagreen; }
+.renderjson .array.syntax  { color: lightsalmon; }

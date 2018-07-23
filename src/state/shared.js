@@ -9,6 +9,4 @@ export function createReducer(initialState, handlerMap) {
   };
 }
 
-export function somethingElse() {
-
-}
+export const Action = (type, data) => ({ type, ...data });

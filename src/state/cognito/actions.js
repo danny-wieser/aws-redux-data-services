@@ -1,10 +1,11 @@
+import { Action } from '../shared';
 
 export const types = {
   LOGIN: 'login',
 };
 
 const login = userData => (dispatch) => {
-  dispatch({ type: types.login });
+  dispatch(Action(types.LOGIN, { username: userData.username }));
   return { username: userData.username };
 };
 
