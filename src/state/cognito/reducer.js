@@ -3,10 +3,10 @@ import { createReducer } from '../shared';
 
 export const INITIAL_STATE = {};
 
-function login(state, payload) {
-  return { ...state, username: payload.username };
-}
+const login = (state, data) => ({ ...state, username: data.payload.username });
+const configure = (state, data) => ({ ...state, config: { ...data.payload.config } });
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [types.LOGIN]: (state, action) => login(state, action),
+  [types.login]: (state, action) => login(state, action),
+  [types.configure]: (state, action) => configure(state, action),
 });
