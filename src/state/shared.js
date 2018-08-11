@@ -10,4 +10,4 @@ export function createReducer(initialState, handlerMap) {
 }
 
 export const Action = (type, data) => ({ type, ...data });
-export const Payload= data => ({ payload: { ...data} });
+export const Payload = data => ({ payload: { ...data } });

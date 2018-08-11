@@ -24,5 +24,5 @@ const services = {
 
 renderDemo(services, document.getElementById('container'));
 
-//auto-dispatch action for AWS config
+// auto-dispatch action for AWS config
 demoStore.dispatch(cognito.actions.configure(config));
