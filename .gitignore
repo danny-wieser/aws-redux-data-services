@@ -1,4 +1,4 @@
 node_modules
 demo/build
-demo/config.json
+demo/config.yaml
 yarn-error.log

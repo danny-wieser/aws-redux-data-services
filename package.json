@@ -4,7 +4,7 @@
   "description": "A redux-based data service layer for the AWS SDK",
   "main": "index.js",
   "repository": "https://github.com/danny-wieser/aws-redux-data-services.git",
-  "author": "<danny.wieser@blackboard.com>",
+  "author": "<danny.wieser@gmail.com>",
   "license": "MIT",
   "scripts": {
     "demo": "webpack-serve --config demo/webpack.config.js --content demo",
@@ -12,7 +12,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "amazon-cognito-identity-js": "^2.0.16",
+    "aws-amplify": "^1.0.5",
     "aws-sdk": "^2.279.1",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
