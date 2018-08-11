@@ -6,6 +6,7 @@ const mode = 'development';
 
 const rules = [
   { test: /\.js?$/, use: [{ loader: 'babel-loader' }] },
+  { test: /\.css$/, loader: 'style-loader!css-loader' },
 ];
 
 module.exports = () => ({

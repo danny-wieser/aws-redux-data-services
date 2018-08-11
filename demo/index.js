@@ -1,17 +1,25 @@
-import * as $ from 'jquery';
-import * as cognito from './services/cognito';
+/* eslint-env browser */
+/* eslint-disable import/no-extraneous-dependencies */
+import { renderDemo, configure as demoConfigure } from 'redux-service-demo';
+import 'redux-service-demo/styles/index.css';
+import cognito from '../src/state/cognito';
 import { configure } from '../src';
 import config from './config.yml';
-import * as demo from './demo-utils';
 
 configure(config);
+demoConfigure({
+  title: 'AWS Redux Data Services',
+});
 
-const state = { cognito: cognito.reducer };
-const store = demo.initializeStore(state);
+const services = {
+  cognito: {
+    reducer: cognito.reducer,
+    types: cognito.types,
+    actions: cognito.actions,
+    forms: {
+      LOGIN: ['username'],
+    },
+  },
+};
 
-const container = $('#actions');
-const services = { cognito };
-demo.createActionSelect(services, container);
-
-demo.eventHandlers(services, store);
-demo.monitorState($('#current-state'), store);
+renderDemo(services, document.getElementById('container'));
