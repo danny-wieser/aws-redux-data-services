@@ -2,9 +2,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { renderDemo, configure as demoConfigure, demoStore } from 'redux-service-demo';
 import 'redux-service-demo/styles/index.css';
-import cognito from '../src/state/cognito';
+import { cognito } from '../src';
 import config from './config.yaml';
 
+console.log(cognito);
 demoConfigure({
   title: 'AWS Redux Data Services',
   useLogger: true,
