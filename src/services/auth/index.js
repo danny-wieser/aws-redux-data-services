@@ -4,6 +4,7 @@ export const doConfigure = authConfig => Amplify.configure({ Auth: { ...authConf
 export const doLogin = async (username, password) => Amplify.Auth.signIn(username, password);
 export const doSignupConfirm = async (username, code) => Amplify.Auth.confirmSignUp(username, code);
 export const doCacheLoad = async () => Amplify.Auth.currentSession();
+export const doSignout = async () => Amplify.Auth.signOut();
 
 export async function doSignup(username, password, givenName) {
   const attributes = { email: username, given_name: givenName };

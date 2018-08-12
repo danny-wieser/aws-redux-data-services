@@ -21,6 +21,7 @@ const services = {
       signup: ['email', 'password', 'givenname'],
       signupconfirm: ['email', 'code'],
       loadauth: [],
+      signout: [],
     },
   },
 };

@@ -52,6 +52,24 @@ const loadauthOK = (state, data) => {
     isLoading: false,
   };
 };
+function loadAuthFail(state) {
+  return {
+    ...state,
+    authSuccess: false,
+    isLoading: false,
+    userData: null,
+  };
+}
+
+function signoutOK(state) {
+  return {
+    ...state,
+    userData: null,
+    authSuccess: false,
+    isLoading: false,
+    jwtToken: null,
+  };
+}
 
 const configure = (state, data) => ({ ...state, config: { ...data.payload.config } });
 
@@ -70,7 +88,11 @@ export const reducer = createReducer(INITIAL_STATE, {
 
   [types.loadauth]: (state, action) => loading(state, action),
   [ok(types.loadauth)]: (state, action) => loadauthOK(state, action),
-  [fail(types.loadauth)]: (state, action) => error(state, action),
+  [fail(types.loadauth)]: (state, action) => loadAuthFail(state, action),
+
+  [types.signout]: (state, action) => loading(state, action),
+  [ok(types.signout)]: (state, action) => signoutOK(state, action),
+  [fail(types.signout)]: (state, action) => error(state, action),
 
   [types.configure]: (state, action) => configure(state, action),
 });

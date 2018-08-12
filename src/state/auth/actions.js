@@ -11,6 +11,7 @@ export const types = {
   login: 'login',
   signup: 'signup',
   signupconfirm: 'signupconfirm',
+  signout: 'signout',
   loadauth: 'loadauth',
 };
 
@@ -59,10 +60,21 @@ const loadauth = () => async (dispatch) => {
   }
 };
 
+const signout = () => async (dispatch) => {
+  dispatch(Action(types.signout, Payload({})));
+  try {
+    await auth.doSignout();
+    dispatch(Action(ok(types.signout), Payload({})));
+  } catch (error) {
+    dispatch(Action(fail(types.signout), Payload(error)));
+  }
+};
+
 export const actions = {
   login,
   configure,
   signup,
   signupconfirm,
+  signout,
   loadauth,
 };
