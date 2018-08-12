@@ -42,6 +42,17 @@ const signupconfirmOK = (state, data) => {
   };
 };
 
+const loadauthOK = (state, data) => {
+  const { payload, jwtToken } = data.payload.idToken;
+  return {
+    ...state,
+    jwtToken,
+    userData: payload,
+    authSuccess: true,
+    isLoading: false,
+  };
+};
+
 const configure = (state, data) => ({ ...state, config: { ...data.payload.config } });
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -56,6 +67,10 @@ export const reducer = createReducer(INITIAL_STATE, {
   [types.signupconfirm]: (state, action) => loading(state, action),
   [ok(types.signupconfirm)]: (state, action) => signupconfirmOK(state, action),
   [fail(types.signupconfirm)]: (state, action) => error(state, action),
+
+  [types.loadauth]: (state, action) => loading(state, action),
+  [ok(types.loadauth)]: (state, action) => loadauthOK(state, action),
+  [fail(types.loadauth)]: (state, action) => error(state, action),
 
   [types.configure]: (state, action) => configure(state, action),
 });

@@ -11,6 +11,7 @@ export const types = {
   login: 'login',
   signup: 'signup',
   signupconfirm: 'signupconfirm',
+  loadauth: 'loadauth',
 };
 
 const configure = (config) => {
@@ -48,9 +49,20 @@ const signupconfirm = (username, code) => async (dispatch) => {
   }
 };
 
+const loadauth = () => async (dispatch) => {
+  dispatch(Action(types.loadauth, Payload({})));
+  try {
+    const response = await auth.doCacheLoad();
+    dispatch(Action(ok(types.loadauth), Payload(response)));
+  } catch (error) {
+    dispatch(Action(fail(types.loadauth), Payload(error)));
+  }
+};
+
 export const actions = {
   login,
   configure,
   signup,
   signupconfirm,
+  loadauth,
 };

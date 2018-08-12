@@ -20,6 +20,7 @@ const services = {
       configure: ['config'],
       signup: ['email', 'password', 'givenname'],
       signupconfirm: ['email', 'code'],
+      loadauth: [],
     },
   },
 };
