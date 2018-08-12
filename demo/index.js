@@ -1,29 +1,29 @@
 /* eslint-env browser */
 /* eslint-disable import/no-extraneous-dependencies */
-import { renderDemo, configure as demoConfigure, demoStore } from 'redux-service-demo';
+import { renderDemo, configure as demoConfigure } from 'redux-service-demo';
 import 'redux-service-demo/styles/index.css';
-import { cognito } from '../src';
+import { auth } from '../src';
 import config from './config.yaml';
 
-console.log(cognito);
 demoConfigure({
   title: 'AWS Redux Data Services',
   useLogger: true,
 });
 
 const services = {
-  cognito: {
-    reducer: cognito.reducer,
-    types: cognito.types,
-    actions: cognito.actions,
+  auth: {
+    reducer: auth.reducer,
+    types: auth.types,
+    actions: auth.actions,
     forms: {
       login: ['username', 'password'],
       configure: ['config'],
+      signup: ['email', 'password', 'givenname'],
+      signupconfirm: ['email', 'code'],
     },
   },
 };
 
-renderDemo(services, document.getElementById('container'));
-
+const demoStore = renderDemo(services, document.getElementById('container'));
 // auto-dispatch action for AWS config
-demoStore.dispatch(cognito.actions.configure(config));
+demoStore.dispatch(auth.actions.configure(config));

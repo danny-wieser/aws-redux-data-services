@@ -3654,9 +3654,9 @@ redux-logger@^3.0.6:
   dependencies:
     deep-diff "^0.3.5"
 
-redux-service-demo@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/redux-service-demo/-/redux-service-demo-1.0.3.tgz#251be1009fcaded31b4a353fc2cf69d05a755993"
+redux-service-demo@1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/redux-service-demo/-/redux-service-demo-1.0.5.tgz#da253300e10959df478a543382a380e905cd55ee"
   dependencies:
     prop-types "^15.6.2"
     react "^16.4.1"

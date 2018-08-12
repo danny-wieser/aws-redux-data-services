@@ -1,3 +1,3 @@
-import * as cognito from './state/cognito';
+import * as auth from './state/auth';
 
-export { cognito };
+export { auth };
