@@ -1,12 +1,44 @@
 import Amplify from 'aws-amplify';
 
-export const doConfigure = authConfig => Amplify.configure({ Auth: { ...authConfig } });
-export const doLogin = async (username, password) => Amplify.Auth.signIn(username, password);
-export const doSignupConfirm = async (username, code) => Amplify.Auth.confirmSignUp(username, code);
-export const doCacheLoad = async () => Amplify.Auth.currentSession();
-export const doSignout = async () => Amplify.Auth.signOut();
+const awsInvoke = async (func, ...params) => {
+  let result;
+  try {
+    const data = await Amplify.Auth[func](...params);
+    result = { ok: true, data };
+  } catch (error) {
+    result = { ok: false, error };
+  }
+  return result;
+};
 
-export async function doSignup(username, password, givenName) {
-  const attributes = { email: username, given_name: givenName };
-  return Amplify.Auth.signUp({ username, password, attributes });
+export const doConfigure = authConfig => Amplify.configure({ Auth: { ...authConfig } });
+export const doLogin = async (username, password) => {
+  const { ok, error, data } = await awsInvoke('signIn', username, password);
+  const { signInUserSession } = data;
+  const { idToken } = signInUserSession;
+  const { payload, jwtToken } = idToken;
+  return { ok, error, payload: { jwtToken, userData: payload } };
+};
+
+export async function doSignup(email, password, givenName) {
+  const attributes = { email, given_name: givenName };
+  const { ok, error, data } = await awsInvoke('signUp', { username: email, password, attributes });
+  const { userConfirmed, user } = data;
+  const { username } = user;
+  return { ok, error, payload: { userConfirmed, username } };
 }
+
+export const doSignupConfirm = async (username, code) => {
+  const { ok, error, data } = await awsInvoke('confirmSignUp', username, code);
+  const userConfirmed = data === 'SUCCESS';
+  return { ok, error, payload: { userConfirmed } };
+};
+
+export const doCacheLoad = async () => {
+  const { ok, error, data } = await awsInvoke('currentSession');
+  const { idToken } = data;
+  const { payload, jwtToken } = idToken;
+  return { ok, error, payload: { jwtToken, userData: payload } };
+};
+
+export const doSignout = () => awsInvoke('signOut');

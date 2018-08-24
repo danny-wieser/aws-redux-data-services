@@ -1,8 +1,7 @@
 import {
-  Action,
-  Payload,
-  ok,
-  fail,
+  ActionLoading,
+  ActionOK,
+  ActionFail,
 } from '../shared';
 import * as auth from '../../services/auth';
 
@@ -17,57 +16,47 @@ export const types = {
 
 const configure = (config) => {
   auth.doConfigure(config);
-  return Action(types.configure, Payload({ config }));
+  return ActionLoading(types.configure, { config });
 };
 
 const login = (username, password) => async (dispatch) => {
-  dispatch(Action(types.login, Payload({ username })));
-  try {
-    const response = await auth.doLogin(username, password);
-    dispatch(Action(ok(types.login), Payload(response)));
-  } catch (error) {
-    dispatch(Action(fail(types.login), Payload(error)));
-  }
+  const type = types.login;
+  dispatch(ActionLoading(type, { username }));
+  const { ok, payload, error } = await auth.doLogin(username, password);
+  const action = ok ? ActionOK(type, payload) : ActionFail(type, error);
+  dispatch(action);
 };
 
 const signup = (email, password, givenname) => async (dispatch) => {
-  dispatch(Action(types.signup, Payload({ email, password, givenname })));
-  try {
-    const response = await auth.doSignup(email, password, givenname);
-    dispatch(Action(ok(types.signup), Payload(response)));
-  } catch (error) {
-    dispatch(Action(fail(types.signup), Payload(error)));
-  }
+  const type = types.signup;
+  dispatch(ActionLoading(type, { email, password, givenname }));
+  const { ok, payload, error } = await auth.doSignup(email, password, givenname);
+  const action = ok ? ActionOK(type, payload) : ActionFail(type, error);
+  dispatch(action);
 };
 
 const signupconfirm = (username, code) => async (dispatch) => {
-  dispatch(Action(types.signupconfirm, Payload({ username })));
-  try {
-    const response = await auth.doSignupConfirm(username, code);
-    dispatch(Action(ok(types.signupconfirm), Payload({ result: response })));
-  } catch (error) {
-    dispatch(Action(fail(types.signupconfirm), Payload(error)));
-  }
+  const type = types.signupconfirm;
+  dispatch(ActionLoading(type, { username }));
+  const { ok, payload, error } = await auth.doSignupConfirm(username, code);
+  const action = ok ? ActionOK(type, payload) : ActionFail(type, error);
+  dispatch(action);
 };
 
 const loadauth = () => async (dispatch) => {
-  dispatch(Action(types.loadauth, Payload({})));
-  try {
-    const response = await auth.doCacheLoad();
-    dispatch(Action(ok(types.loadauth), Payload(response)));
-  } catch (error) {
-    dispatch(Action(fail(types.loadauth), Payload(error)));
-  }
+  const type = types.loadauth;
+  dispatch(ActionLoading(type, {}));
+  const { ok, payload, error } = await auth.doCacheLoad();
+  const action = ok ? ActionOK(type, payload) : ActionFail(type, error);
+  dispatch(action);
 };
 
 const signout = () => async (dispatch) => {
-  dispatch(Action(types.signout, Payload({})));
-  try {
-    await auth.doSignout();
-    dispatch(Action(ok(types.signout), Payload({})));
-  } catch (error) {
-    dispatch(Action(fail(types.signout), Payload(error)));
-  }
+  const type = types.signout;
+  dispatch(ActionLoading(type, {}));
+  const { ok, payload, error } = await auth.doSignout();
+  const action = ok ? ActionOK(type, payload) : ActionFail(type, error);
+  dispatch(action);
 };
 
 export const actions = {
