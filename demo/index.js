@@ -1,5 +1,6 @@
 /* eslint-env browser */
 /* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/no-unresolved */
 import { renderDemo, configure as demoConfigure } from 'redux-service-demo';
 import 'redux-service-demo/styles/index.css';
 import { auth } from '../src';
