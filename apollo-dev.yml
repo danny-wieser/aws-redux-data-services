@@ -1,0 +1,50 @@
+# Users
+scheduler_user: automationlg-admin
+scheduler_user_display_name: AUTOMATIONLG-ADMIN DisplayName
+scheduler_password: password
+admin_user_id: C7175D27EF66E72A2EA2BFCC967DFF7F # id is used in user management tests, otherwise not necessary
+scheduler_root_user: root-user
+scheduler_root_password: password
+scheduler_manager_user: AUTOMATIONLG-MANAGER # manager is used in user management tests, otherwise not necessary
+scheduler_manager_password: password
+# Scheduler
+scheduler_login_url: https://apollo-dev.bbcollab.net/collab/ui/scheduler
+scheduler_url_params: suppressFtue=true # disables guidance tooltips that show for the first time
+login_group: AUTOMATIONLG
+retain_lg_default_settings: true
+# Sessions
+session_prefix: apollo-automation-DEV
+base_url: https://apollo-dev.bbcollab.net/collab/ui/session
+url_params: suppressFtue=true # = suppress First To Ultra Experience? (disabling tutorial when joining session for the first time)
+csa_url: http://csa1-dev.bbpd.io:9000
+ces_url: https://citc-qa-admin.bbcollabcloud.com/192.168.126.9:9000/
+# Launching component
+launch_components: cla_flexgen
+# Telephony feature - used only for sip_calls tag (see limitations https://confluence.bbpd.io/x/TRYtDQ)
+asterisk: ast1-dev.bbpd.io
+telephony_number: 12347
+# Collab capture feature
+collab_capture: https://capture-dev-cap.bbcollabcloud.com/collab/ui/capture/record?token=eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjIzNzc4NzE1NzAsInN1YiI6IlZpZGVvIEludGVncmF0aW9uIEpXVCBUb2tlbiIsInVzZXJQZXJtaXNzaW9uIjoiVyIsImlzcyI6IlZpZGVvIEludGVncmF0aW9uIiwic2l0ZUlkIjoiYzk4NWRjY2UtNGJkYS00YjUzLTk5NTUtMDNiNGVmM2NlMTA5IiwiY291cnNlSWQiOiJjb3Vyc2UtaWQiLCJ1c2VySWQiOiJ1c2VyLWlkIn0.KCH4RrCGnAzlMV76YWYuNr84yXkVQ1t3DvkD3f121Fk
+# CCR
+ccr_url: TBD # to get ccr current version in Logging feature
+ccr_site_id: TBD
+ccr_container_id: TBD
+ccr_login_group_id: TBD
+# Platform Admin UI credentials
+sms_api_user: admin-user
+sms_api_password: password
+ces_user: admin-user
+ces_password: password
+ccr_user: admin-user
+ccr_password: password
+bpds_user: admin-user
+bpds_password: password
+# admin links
+sms_api_url_admin: https://admin-dev-citc.bbcollab.com/192.168.120.8:9001/
+ces_url_admin: https://citc-qa-admin.bbcollabcloud.com/192.168.126.9:9001/
+ccr_url_admin: https://admin-dev-citc.bbcollab.com/192.168.120.24:9001/
+zmedia: http://zmedia-dev.bbcollab.net:8081
+cla_url_admin: http://apollo-cls.bbcollab.net:9001/
+cca_url_admin: http://apollo-cls.bbcollab.net:9101/
+csa_url_admin: http://csa1-dev.bbpd.io:9001/
+bpds_url_admin: https://admin-dev-citc.bbcollab.com/192.168.120.22:9001/
